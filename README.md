@@ -1,1 +1,3 @@
-# shikimori-api
+# @xaro/shikimori-api
+
+## In dev

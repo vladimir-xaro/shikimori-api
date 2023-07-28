@@ -1,0 +1,46 @@
+{
+  "name": "@xaro/shikimori-api",
+  "version": "0.0.1",
+  "description": "JS/TS Shikimori API",
+  "main": "dist/shikimori-api.js",
+  "types": "src/types.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "release": "dotenv release-it --",
+    "test": "dotenv node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladimir-xaro/shikimori-api.git"
+  },
+  "keywords": [
+    "shikimori",
+    "api",
+    "javasript",
+    "typescript",
+    "types"
+  ],
+  "author": "Vladimir Slavgorodskiy <vladimir.xaro@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladimir-xaro/shikimori-api/issues"
+  },
+  "homepage": "https://github.com/vladimir-xaro/shikimori-api#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "dotenv-cli": "^7.2.1",
+    "esbuild": "^0.18.16",
+    "node-storage": "^0.0.9",
+    "path": "^0.12.7",
+    "release-it": "^16.1.3",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.6.4",
+    "axios": "^1.4.0",
+    "node-fetch": "^3.3.2"
+  }
+}

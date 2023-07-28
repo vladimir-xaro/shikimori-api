@@ -1,0 +1,7 @@
+node_modules
+test
+.env
+.release-it.json
+build.mjs
+package-lock.json
+plugins.esbuild.mjs
