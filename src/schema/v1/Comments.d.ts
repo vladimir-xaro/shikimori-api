@@ -16,13 +16,13 @@ declare namespace Schema.v1 {
                     body:               string;
                     commentable_id:     number;
                     commentable_type:   Shikimori.Comment.Type;
-                    is_offtopic:        BooleanString | 1 | 0;
+                    is_offtopic:        BoolOrNumBool;
                 };
             }
             type Params = {
                 comment:    Schema.v1.Comments.Create.Params.Comment;
-                frontend:   BooleanString | 1 | 0;
-                broadcast:  BooleanString | 1 | 0;
+                frontend:   BoolOrNumBool;
+                broadcast:  BoolOrNumBool;
             };
         }
 
@@ -34,7 +34,7 @@ declare namespace Schema.v1 {
             }
             type Params = {
                 comments:   Schema.v1.Comments.Update.Params.Comments;
-                frontend:   BooleanString | 1 | 0;
+                frontend:   BoolOrNumBool;
             };
         }
     }
@@ -43,14 +43,12 @@ declare namespace Schema.v1 {
         /**
          * List comments
          * @route GET /api/comments
-         * @need_auth false
          */
         index(params: Schema.v1.Comments.Index.Params) : Promise< Shikimori.Comment.Extended[] >;
 
         /**
          * Show a comment
          * @route GET /api/comments/:id
-         * @need_auth false
          */
         get(id: number) : Promise< Shikimori.Comment.Extended >;
 

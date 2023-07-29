@@ -3,7 +3,6 @@ declare namespace Schema.v1 {
         /**
          * List of forums
          * @route `GET /api/forums`
-         * @need_auth false
          */
         index(): Promise< Shikimori.Forum[] >;
     }

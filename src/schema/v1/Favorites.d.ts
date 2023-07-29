@@ -22,7 +22,7 @@ declare namespace Schema.v1 {
          * @need_auth true
          */
         create(linked_type: Exclude<Shikimori.LinkedType, 'Person'>, linked_id: number, kind?: Shikimori.FavoritesKind) : Promise< Schema.v1.Favorites.Create.Response >;
-        create(linked_type: 'Person', linked_id: NumberString, kind: Shikimori.FavoritesKind) : Promise< Schema.v1.Favorites.Create.Response >;
+        create(linked_type: 'Person', linked_id: number, kind: Shikimori.FavoritesKind) : Promise< Schema.v1.Favorites.Create.Response >;
 
         /**
          * Destroy a favorite

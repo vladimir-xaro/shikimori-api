@@ -13,7 +13,7 @@ declare namespace Schema.v1 {
                 type Club = {
                     name?:                  string;
                     description?:           string;
-                    display_images?:        BooleanString | 1 | 0;
+                    display_images?:        BoolOrNumBool;
                     comment_policy?:        'free' | 'members' | 'admins';
                     topic_policy?:          'members' | 'admins';
                     image_upload_policy?:   'members' | 'admins';
@@ -28,14 +28,12 @@ declare namespace Schema.v1 {
         /**
          * @route GET /api/clubs
          * @description List clubs
-         * @need_auth false
          */
         index(params: Schema.v1.Clubs.Index.Params) : Promise< Shikimori.Club[] >;
 
         /**
          * @route GET /api/clubs/:id
          * @description Show a club
-         * @need_auth false
          */
         get(id: number) : Promise< Shikimori.Club.Extended >;
 
@@ -51,21 +49,18 @@ declare namespace Schema.v1 {
         /**
          * @route GET /api/clubs/:id/animes
          * @description List clubs
-         * @need_auth false
          */
         animes(id: number, params?: ParamsWithPage) : Promise< Shikimori.Club[] >;
 
         /**
          * @route GET /api/clubs/:id/mangas
          * @description Show club's mangas
-         * @need_auth false
          */
         mangas(id: number, params?: ParamsWithPage) : Promise< Shikimori.Club[] >;
 
         /**
          * @route GET /api/clubs/:id/ranobe
          * @description Show club's ranobe
-         * @need_auth false
          */
         ranobe(id: number, params?: ParamsWithPage) : Promise< Shikimori.Ranobe[] >;
         
@@ -78,35 +73,30 @@ declare namespace Schema.v1 {
         /**
          * @route GET /api/clubs/:id/characters
          * @description Show club's characters
-         * @need_auth false
          */
         characters(id: number, params?: ParamsWithPage) : Promise< Shikimori.Character[] >;
 
         /**
          * @route GET /api/clubs/:id/collections
          * @description Show club's collections
-         * @need_auth false
          */
         collections(id: number, params?: ParamsWithPage) : Promise< Shikimori.Collection[] >;
 
         /**
          * @route GET /api/clubs/:id/clubs
          * @description Show club's clubs
-         * @need_auth false
          */
         clubs(id: number, params?: ParamsWithPage) : Promise< Shikimori.Club[] >;
 
         /**
          * @route GET /api/clubs/:id/members
          * @description Show club's members
-         * @need_auth false
          */
         members(id: number) : Promise< Shikimori.User[] >;
 
         /**
          * @route GET /api/clubs/:id/images
          * @description Show club's images
-         * @need_auth false
          */
         images(id: number) : Promise< Shikimori.Image[] >;
 

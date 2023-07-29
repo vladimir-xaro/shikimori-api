@@ -3,7 +3,6 @@ declare namespace Schema.v1 {
         /**
          * @route GET /api/bans
          * @description List bans
-         * @need_auth false
          */
         index() : Promise< Shikimori.Ban[] >;
     }

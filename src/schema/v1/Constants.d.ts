@@ -31,19 +31,16 @@ declare namespace Schema.v1 {
     interface Constants {
         /**
          * @route GET /api/constants/anime
-         * @need_auth false
          */
         anime() : Promise< Schema.v1.Constants.Anime.Response >;
 
         /**
          * @route GET /api/constants/manga
-         * @need_auth false
          */
         manga() : Promise< Schema.v1.Constants.Manga.Response >;
 
         /**
          * @route GET /api/constants/user_rate
-         * @need_auth false
          */
         user_rate() : Promise< Schema.v1.Constants.UserRate.Response >;
 
@@ -55,13 +52,11 @@ declare namespace Schema.v1 {
 
         /**
          * @route GET /api/constants/club
-         * @need_auth false
          */
         club() : Promise< Schema.v1.Constants.Club.Response >;
 
         /**
          * @route GET /api/constants/smileys
-         * @need_auth false
          */
         smileys() : Promise< Schema.v1.Constants.Smileys.Response >;
     }

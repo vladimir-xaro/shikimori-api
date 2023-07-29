@@ -1,3 +1,6 @@
+/**
+ * @borrows AnimesController#externalLinks as AnimesController#external_links
+ */
 export default class AnimesController implements HasApi, Schema.v1.Animes {
     api: Schema.API;
 
@@ -15,12 +18,12 @@ export default class AnimesController implements HasApi, Schema.v1.Animes {
         return res.data;
     }
 
-    async roles(id: number) : Promise< Shikimori.Anime.Roles[] > {
-        const res = await this.api.request.get< Shikimori.Anime.Roles[] >(`/animes/${id}/roles`);
+    async roles(id: number) : Promise< Shikimori.Roles[] > {
+        const res = await this.api.request.get< Shikimori.Roles[] >(`/animes/${id}/roles`);
         return res.data;
     }
 
-    async similiar(id: number) : Promise< Shikimori.Anime[] > {
+    async similar(id: number) : Promise< Shikimori.Anime[] > {
         const res = await this.api.request.get< Shikimori.Anime[] >(`/animes/${id}/similiar`);
         return res.data;
     }
@@ -35,14 +38,18 @@ export default class AnimesController implements HasApi, Schema.v1.Animes {
         return res.data;
     }
 
-    async franchise(id: number) : Promise< Shikimori.Anime.Franchise > {
-        const res = await this.api.request.get< Shikimori.Anime.Franchise >(`/animes/${id}/franchise`);
+    async franchise(id: number) : Promise< Shikimori.Franchise > {
+        const res = await this.api.request.get< Shikimori.Franchise >(`/animes/${id}/franchise`);
         return res.data;
     }
 
-    async externalLinks(id: number) : Promise< Shikimori.Anime.ExternalLink[] > {
-        const res = await this.api.request.get< Shikimori.Anime.ExternalLink[] >(`/animes/${id}/external_links`);
+    async external_links(id: number) : Promise< Shikimori.ExternalLink[] > {
+        const res = await this.api.request.get< Shikimori.ExternalLink[] >(`/animes/${id}/external_links`);
         return res.data;
+    }
+
+    async externalLinks(id: number) : Promise< Shikimori.ExternalLink[] > {
+        return this.external_links(id);
     }
 
     async topics(id: number, params: Schema.v1.Animes.Topics.Params) : Promise< Shikimori.Topic<'Anime'>[] > {
