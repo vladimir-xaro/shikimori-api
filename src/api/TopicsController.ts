@@ -1,6 +1,9 @@
-import Controller from '@src/Controller.js';
+import Controller from '@@src/Controller.ts';
+import type * as Schema from '@@schema/index.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+import type { ResponseWithNotice } from '@@types/general.d.ts';
 
-export default class TopicsController extends Controller implements HasApi, Schema.v1.Topics, Schema.v2.Topics {
+export default class TopicsController extends Controller implements Schema.v1.Topics, Schema.v2.Topics {
 
     async index<T extends keyof Shikimori.Topic.Linked.Map | undefined = undefined>(params: Schema.v1.Topics.Index.Params = {}) : Promise< Shikimori.Topic<T>[] > {
         const res = await this.api.request.get< Shikimori.Topic<T>[] >(`/topics`, { params });

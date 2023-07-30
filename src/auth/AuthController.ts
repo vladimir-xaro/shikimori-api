@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { REDIRECT_URI, AUTH_URL, TOKEN_URL } from '@src/constants.js';
+import { REDIRECT_URI, AUTH_URL, TOKEN_URL } from '@@src/constants.js';
 
 
 

@@ -1,23 +1,24 @@
-declare namespace Schema.v1 {
-    namespace People {
-        namespace Search {
-            type Params = {
-                search: string;
-                kind:   'seyu' | 'mangaka' | 'producer';
-            };
-        }
-    }
-    interface People {
-        /**
-         * Show a person
-         * @route GET /api/people/:id
-         */
-        get(id: number) : Promise< Shikimori.Person.Extended >;
+import type { Shikimori } from '@@types/Shikimori.d.ts';
 
-        /**
-         * Search people
-         * @route GET /api/people/search
-         */
-        search(params?: Schema.v1.People.Search.Params) : Promise< Shikimori.Person[] >;
+export namespace People {
+    namespace Search {
+        type Params = {
+            search: string;
+            kind:   'seyu' | 'mangaka' | 'producer';
+        };
     }
+}
+
+export interface People {
+    /**
+     * Show a person
+     * @route GET /api/people/:id
+     */
+    get(id: number) : Promise< Shikimori.Person.Extended >;
+
+    /**
+     * Search people
+     * @route GET /api/people/search
+     */
+    search(params?: People.Search.Params) : Promise< Shikimori.Person[] >;
 }

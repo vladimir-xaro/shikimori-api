@@ -1,14 +1,15 @@
-declare namespace Schema.v1 {
-    namespace Calendar.Index {
-        type Params = {
-            censored: boolean;
-        }
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+
+export namespace Calendar.Index {
+    type Params = {
+        censored: boolean;
     }
-    interface Calendar {
-        /**
-         * @route GET /api/calendar
-         * @description Show a calendar
-         */
-        index(params: Schema.v1.Calendar.Index.Params): Promise< Shikimori.Calendar[] >;
-    }
+}
+
+export interface Calendar {
+    /**
+     * @route GET /api/calendar
+     * @description Show a calendar
+     */
+    index(params: Calendar.Index.Params): Promise< Shikimori.Calendar[] >;
 }

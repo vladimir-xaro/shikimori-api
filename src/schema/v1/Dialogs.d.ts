@@ -1,38 +1,37 @@
-declare namespace Schema.v1 {
-    namespace Dialogs.Search {
-        type Params = {
-            search: string;
-        }
+import type { ResponseWithNotice } from '@@types/general.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+
+export namespace Dialogs.Search {
+    type Params = {
+        search: string;
     }
-    interface Dialogs {
-        /**
-         * List dialogs
-         * @route GET /api/dialogs
-         * @need_auth true
-         * @scope messages
-         */
-        index() : Promise< Shikimori.Dialog[] >;
+}
 
-        /**
-         * Show a dialog
-         * @route GET /api/dialogs/:id
-         * @need_auth true
-         * @scope messages
-         */
-        get(id: number) : Promise< Shikimori.Message.Extended[] >;
+export interface Dialogs {
+    /**
+     * List dialogs
+     * @route GET /api/dialogs
+     * @scope messages
+     */
+    index() : Promise< Shikimori.Dialog[] >;
 
-        /**
-         * Destroy a dialog
-         * @route DELETE /api/dialogs/:id
-         * @need_auth true
-         * @scope messages
-         */
-        destroy(id: number) : Promise< ResponseWithNotice >;
+    /**
+     * Show a dialog
+     * @route GET /api/dialogs/:id
+     * @scope messages
+     */
+    get(id: number) : Promise< Shikimori.Message.Extended[] >;
 
-        /**
-         * @see destroy
-         * @alias Schema.v1.Dialogs.destroy()
-         */
-        delete(id: number) : Promise< ResponseWithNotice >;
-    }
+    /**
+     * Destroy a dialog
+     * @route DELETE /api/dialogs/:id
+     * @scope messages
+     */
+    destroy(id: number) : Promise< ResponseWithNotice >;
+
+    /**
+     * @see destroy
+     * @alias Schema.v1.Dialogs.destroy()
+     */
+    delete(id: number) : Promise< ResponseWithNotice >;
 }

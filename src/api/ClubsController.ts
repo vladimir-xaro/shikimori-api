@@ -1,6 +1,10 @@
-import Controller from '@src/Controller.js';
+import Controller from '@@src/Controller.ts';
+import type * as Schema from '@@schema/index.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+import type { ParamsWithPage } from '@@types/general.d.ts';
 
 export default class ClubsController extends Controller implements Schema.v1.Clubs {
+
     async index(params: Schema.v1.Clubs.Index.Params) : Promise< Shikimori.Club[] > {
         const res = await this.api.request.get(`/clubs`, { params });
         return res.data;
@@ -69,6 +73,5 @@ export default class ClubsController extends Controller implements Schema.v1.Clu
         const res = await this.api.request.post(`/clubs/${id}`);
         return res.data;
     }
-
 
 }

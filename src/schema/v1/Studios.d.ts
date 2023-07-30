@@ -1,9 +1,9 @@
-declare namespace Schema.v1 {
-    interface Studios {
-        /**
-         * List studios
-         * @route GET /api/studios
-         */
-        index() : Promise< Shikimori.Studio[] >;
-    }
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+
+export interface Studios {
+    /**
+     * List studios
+     * @route GET /api/studios
+     */
+    index() : Promise< Shikimori.Studio[] >;
 }

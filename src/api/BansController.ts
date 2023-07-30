@@ -1,12 +1,12 @@
-export default class BansController implements HasApi, Schema.v1.Bans {
-    api: Schema.API;
+import Controller from '@@src/Controller.ts';
+import type * as Schema from '@@schema/index.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
 
-    constructor(api: Schema.API) {
-        this.api = api;
-    }
+export default class BansController extends Controller implements Schema.v1.Bans {
 
     async index() : Promise< Shikimori.Ban[] > {
         const res = await this.api.request.get< Shikimori.Ban[] >('/bans');
         return res.data;
     }
+
 }

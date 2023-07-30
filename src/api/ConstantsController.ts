@@ -1,4 +1,5 @@
-import Controller from '@src/Controller.js';
+import Controller from '@@src/Controller.ts';
+import type * as Schema from '@@schema/index.d.ts';
 
 export default class ConstantsController extends Controller implements Schema.v1.Constants {
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { API_URL } from './constants.js';
 
-import AuthController from '@auth/AuthController.js';
+import AuthController from '@@auth/AuthController.js';
 
 import AchievementsController from './api/AchievementsController.js';
 import AnimesController from 'api/AnimesController.js';

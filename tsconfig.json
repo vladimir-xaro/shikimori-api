@@ -12,18 +12,21 @@
         "strict": true,
         "sourceMap": false,
         "declaration": true,
-        // "noImplicitAny": false,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
+        // "noImplicitAny": true,
         "esModuleInterop": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
         "paths": {
-            "@src/*": [ "*" ],
-            "@schema/*": [ "schema/*" ],
-            "@auth/*": [ "auth/*" ],
-            "@api/*": [ "api/*" ]
+            "@@src/*": [ "*" ],
+            "@@schema/*": [ "schema/*" ],
+            "@@auth/*": [ "auth/*" ],
+            "@@api/*": [ "api/*" ],
+            "@@types/*": [ "types/*" ]
         }
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*.ts"
     ],
     "exclude": [
         "./dist"

@@ -1,12 +1,8 @@
-/**
- * @borrows AnimesController#externalLinks as AnimesController#external_links
- */
-export default class AnimesController implements HasApi, Schema.v1.Animes {
-    api: Schema.API;
+import Controller from '@@src/Controller.ts';
+import type * as Schema from '@@schema/index.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
 
-    constructor(api: Schema.API) {
-        this.api = api;
-    }
+export default class AnimesController extends Controller implements Schema.v1.Animes {
 
     async index(params: Schema.v1.Animes.Index.Params) : Promise< Shikimori.Anime[] > {
         const res = await this.api.request.get< Shikimori.Anime[] >(`/animes`, { params });
@@ -28,8 +24,8 @@ export default class AnimesController implements HasApi, Schema.v1.Animes {
         return res.data;
     }
 
-    async related(id: number) : Promise< Shikimori.Anime.Related[] > {
-        const res = await this.api.request.get< Shikimori.Anime.Related[] >(`/animes/${id}/related`);
+    async related(id: number) : Promise< Shikimori.Related[] > {
+        const res = await this.api.request.get< Shikimori.Related[] >(`/animes/${id}/related`);
         return res.data;
     }
 
@@ -56,4 +52,5 @@ export default class AnimesController implements HasApi, Schema.v1.Animes {
         const res = await this.api.request.get< Shikimori.Topic<'Anime'>[] >(`/animes/${id}/topics`, { params });
         return res.data;
     }
+
 }
