@@ -13,7 +13,7 @@ declare namespace Schema.v1 {
          * @route GET /api/people/:id
          */
         get(id: number) : Promise< Shikimori.Person.Extended >;
-        
+
         /**
          * Search people
          * @route GET /api/people/search

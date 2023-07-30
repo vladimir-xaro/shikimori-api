@@ -63,7 +63,7 @@ declare namespace Schema.v1 {
          * @description Show club's ranobe
          */
         ranobe(id: number, params?: ParamsWithPage) : Promise< Shikimori.Ranobe[] >;
-        
+
         /**
          * @see Schema.v1.Clubs.ranobe
          * @alias Schema.v1.Clubs.ranobe

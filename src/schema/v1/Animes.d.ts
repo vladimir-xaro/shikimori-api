@@ -4,14 +4,14 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:          number;
-                
+
                 /** @validation max `50` */
                 limit?:         number;
 
                 order?:         Shikimori.Anime.Order;
                 kind?:          Shikimori.Anime.Kind.Extended;
                 status?:        Shikimori.Anime.Status;
-                
+
                 /** @example 'summer_2017', '2016', '2014_2016', '199x', 'spring_2016,fall_2017' */
                 season?:        string;
 
@@ -32,16 +32,16 @@ declare namespace Schema.v1 {
 
                 /** Set to `false` to allow hentai, yaoi and yuri */
                 censored?:      boolean;
-                
+
                 /** Status of anime in current user list */
                 mylist?:        Shikimori.UserList;
-                
+
                 /** List of anime ids separated by comma OR ids array */
                 ids?:           string | NumOrNumStr[];
-                
+
                 /** List of anime ids separated by comma OR ids array */
                 exclude_ids?:   string | NumOrNumStr[];
-                
+
                 /** Search phrase to filter animes by name */
                 search?:        string;
             };
@@ -51,7 +51,7 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:      number;
-                
+
                 /** @validation max `30` */
                 limit?:     number;
 
@@ -114,7 +114,7 @@ declare namespace Schema.v1 {
          * @description
          */
         external_links(id: number) : Promise< Shikimori.ExternalLink[] >;
-        
+
         /**
          * @see Schema.v1.Animes.external_links
          * @alias external_links

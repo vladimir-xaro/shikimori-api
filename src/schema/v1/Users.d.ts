@@ -4,12 +4,12 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:  number;
-                
+
                 /** @validation max `100` */
                 limit?: number;
             };
         }
-        
+
         namespace Get {
             type Params = {
                 /**
@@ -20,16 +20,16 @@ declare namespace Schema.v1 {
                 is_nickname: '1';
             };
         }
-        
+
         namespace SignOut {
             type Response = 'signed out';
         }
-        
+
         namespace AnimeRates {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:      number;
-                
+
                 /** @validation max `5_000` */
                 limit?:     number;
 
@@ -44,7 +44,7 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:      number;
-                
+
                 /** @validation max `5_000` */
                 limit?:     number;
 
@@ -57,7 +57,7 @@ declare namespace Schema.v1 {
             type Params<T extends Shikimori.Message.Type> = {
                 /** @validation between `1` and  `100_000` */
                 page?:  number;
-                
+
                 /** @validation max `100` */
                 limit?: number;
 
@@ -78,7 +78,7 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:          number;
-                
+
                 /** @validation max `100` */
                 limit?:         number;
 
@@ -112,7 +112,13 @@ declare namespace Schema.v1 {
          * Show current user's brief info
          * @route GET /api/users/whoami
          */
-        info() : Promise< Shikimori.User.Info >;
+        whoami() : Promise< Shikimori.User.Info >;
+
+        /**
+         * @see Schema.v1.Users#whoami
+         * @alias whoami
+         */
+        whoAmI() : Promise< Shikimori.User.Info >;
 
         /**
          * Sign out the user
@@ -131,7 +137,7 @@ declare namespace Schema.v1 {
          * @route GET /api/users/:id/friends
          */
         friends(id: number | string) : Promise< Shikimori.User[] >;
-        
+
         /**
          * Show user's clubs
          * @route GET /api/users/:id/clubs
@@ -143,7 +149,7 @@ declare namespace Schema.v1 {
          * @route GET /api/users/:id/anime_rates
          */
         anime_rates(id: number | string, params?: Schema.v1.Users.AnimeRates.Params) : Promise< Shikimori.UserRate.WithUserAndTitle<'anime'>[] >;
-        
+
         /**
          * @see Schema.v1.Users.anime_rates
          * @alias anime_rates
@@ -155,7 +161,7 @@ declare namespace Schema.v1 {
          * @route GET /api/users/:id/manga_rates
          */
         manga_rates(id: number | string, params?: Schema.v1.Users.MangaRates.Params) : Promise< Shikimori.UserRate.WithUserAndTitle<'manga'>[] >;
-        
+
         /**
          * @see Schema.v1.Users.manga_rates
          * @alias manga_rates
@@ -182,12 +188,13 @@ declare namespace Schema.v1 {
         /**
          * Show current user's unread messages counts
          * @route GET /api/users/:id/unread_messages
+         * @scope `messages`
          */
         unread_messages(id: number | string) : Promise< Schema.v1.Users.UnreadMessages.Response >;
-        
+
         /**
-         * @see Schema.v1.Users.manga_rates
-         * @alias manga_rates
+         * @see Schema.v1.Users.unread_messages
+         * @alias unread_messages
         */
         unreadMessages(id: number | string) : Promise< Schema.v1.Users.UnreadMessages.Response >;
 

@@ -8,7 +8,7 @@ declare namespace Schema {
              * @scope `user_rates`
              */
             cleanup(type: Shikimori.UserRateType) : Promise< ResponseWithNotice >;
-            
+
             /**
              * Reset all user scores to 0
              * @route DELETE /api/user_rates/:type/reset

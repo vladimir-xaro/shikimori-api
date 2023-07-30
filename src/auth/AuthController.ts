@@ -9,7 +9,7 @@ export default class AuthController implements Schema.Auth {
     client_secret:  string;
     access_token!:  string;
     refresh_token!: string;
-    
+
     request:        AxiosInstance;
 
     constructor(params: Schema.Auth.Contructor.Params) {

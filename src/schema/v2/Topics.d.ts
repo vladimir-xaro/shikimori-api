@@ -4,7 +4,7 @@ declare namespace Schema.v2 {
             topic_id:   `${number}`;
             is_ignored: boolean;
         };
-        
+
         namespace Ignore {
             type Response = Schema.v2.Topics.Response;
         }

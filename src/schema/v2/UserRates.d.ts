@@ -6,14 +6,17 @@ declare namespace Schema.v2 {
                  * When this field is set `page` and `limit` ignored
                  */
                 user_id?:       number;
+
                 target_id?:     number;
                 target_type?:   Shikimori.UserRateType;
                 status?:        Shikimori.UserList;
+
                 /**
                  * This field is ignored when `user_id` is set
                  * @validation max 100_000
                  */
                 page?:          number;
+
                 /**
                  * @ignore This field is ignored when `user_id` is set
                  * @validation max 1_000
@@ -73,7 +76,7 @@ declare namespace Schema.v2 {
          * @param id UserRate id
          */
         get(id: number) : Promise< Shikimori.UserRate.Extended >;
-        
+
         /**
          * Create an user rate
          * @route POST /api/v2/user_rates
@@ -81,7 +84,7 @@ declare namespace Schema.v2 {
          * @scope `user_rates`
          */
         create(params: Schema.v2.UserRates.Create.Params) : Promise< Shikimori.UserRate.Extended >;
-        
+
         /**
          * Update an user rate
          * @route PATCH /api/v2/user_rates/:id
@@ -91,7 +94,7 @@ declare namespace Schema.v2 {
          * @param id UserRate id
          */
         update(id: number, params: Schema.v2.UserRates.Update.Params) : Promise< Shikimori.UserRate.Extended >;
-        
+
         /**
          * Increment episodes/chapters by 1
          * @route POST /api/v2/user_rates/:id/increment
@@ -100,7 +103,7 @@ declare namespace Schema.v2 {
          * @param id UserRate id
          */
         increment(id: number) : Promise< Shikimori.UserRate.Extended >;
-        
+
         /**
          * Destroy an user rate
          * @route DELETE /api/v2/user_rates/:id
@@ -108,7 +111,7 @@ declare namespace Schema.v2 {
          * @scope `user_rates`
          */
         destroy(id: number) : Promise< void >;
-        
+
         /**
          * @see destroy
          * @alias Schema.v2.UserRates.destroy()

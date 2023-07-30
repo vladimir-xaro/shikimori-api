@@ -83,7 +83,7 @@ declare namespace Schema.v1 {
          * @scope `messages`
          */
         destroy(id: number) : Promise< Shikimori.Message >;
-        
+
         /**
          * @see Schema.v1.Messages.destroy
          * @alias destroy
@@ -97,7 +97,7 @@ declare namespace Schema.v1 {
          * @scope `messages`
          */
         mark_read(params: Schema.v1.Messages.MarkRead.Params) : Promise< void >;
-        
+
         /**
          * @see Schema.v1.Messages.mark_read
          * @alias mark_read
@@ -119,7 +119,7 @@ declare namespace Schema.v1 {
          * @scope `messages`
          */
         delete_all(params: Schema.v1.Messages.DeleteAll.Params) : Promise< void >;
-        
+
         /**
          * @see Schema.v1.Messages.delete_all
          * @alias delete_all

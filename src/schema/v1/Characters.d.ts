@@ -10,7 +10,7 @@ declare namespace Schema.v1 {
          * @route GET /api/characters/:id
          */
         get(id: number) : Promise< Shikimori.Character.Extended >;
-        
+
         /**
          * Search characters
          * @route GET /api/characters/search

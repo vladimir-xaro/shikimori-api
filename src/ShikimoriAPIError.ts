@@ -24,7 +24,7 @@ export default class ShikimoriAPIError extends Error {
         options?: ErrorOptions
     ) {
         super(message, options);
-        
+
         this.code       = code;
         this.request    = request;
         this.response   = response;

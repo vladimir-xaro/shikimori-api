@@ -109,7 +109,7 @@ declare namespace Shikimori {
             name:   number;
             value:  number;
         };
-        
+
         type Status = {
             name:   string;
             value:  number;
@@ -143,9 +143,17 @@ declare namespace Shikimori {
         image_url:  string;
         player_url: string;
         name:       string,
-        kind:       string; // pv, ...
-        hosting:    string; // youtube, ...
+        kind:       Shikimori.Video.Kind;
+        hosting:    Shikimori.Video.Hosting;
     };
+    namespace Video {
+        type Kind = 'pv' | 'character_trailer' | 'cm' | 'op' | 'ed' | 'op_ed_clip' | 'clip' |
+                    'other' | 'episode_preview';
+
+        type Hosting = 'youtube' | 'vk' | 'ok' | 'coub' | 'rutube' | 'vimeo' | 'sibnet' | 'yandex' |
+                    'streamable' | 'smotret_anime' | 'myvi' | 'youmite' | 'viuly' | 'stormo' |
+                    'mediafile';
+    }
 
     type UserRate = {
         id:         number;
@@ -247,7 +255,7 @@ declare namespace Shikimori {
             weight:     number;
             relation:   string; // prequel
         };
-        
+
         type Node = {
             id:         number;
             date:       number;
@@ -350,7 +358,7 @@ declare namespace Shikimori {
     type Critique = {};
     type Contest = {};
     type CosplayGallery = {};
-    
+
     type Review = {
         id:                        number;
         user_id:                   number;
@@ -420,7 +428,7 @@ declare namespace Shikimori {
                 genres:         []; // alway empty
                 studios:        []; // alway empty
                 publishers:     []; // alway empty
-                
+
                 /** length <= 26 */
                 activity:       Shikimori.User.Extended.Stats.Activity.Item[];
             };
@@ -464,11 +472,11 @@ declare namespace Shikimori {
         }
 
         type Info = User & {
-            name:       string | null,
-            sex:        Shikimori.Sex,
-            website:    string | null,
-            birth_on:   Shikimori.Date | null,
-            full_years: number | null,
+            name:       string | null;
+            sex:        Shikimori.Sex;
+            website:    string | null;
+            birth_on:   Shikimori.Date | null;
+            full_years: number | null;
             locale:     Shikimori.Locale;
         };
 
@@ -505,10 +513,10 @@ declare namespace Shikimori {
         user_id:            number;
         comment:            Shikimori.Comment;
         moderator_id:       number;
-        
+
         /** moderator comment */
         reason:             string;
-        
+
         created_at:         DateString;
         duration_minutes:   number;
         user:               Shikimori.User;
@@ -584,7 +592,7 @@ declare namespace Shikimori {
         user:                   Shikimori.User;
         type:                   Shikimori.Topic.Type;
         linked_id:              T extends keyof Shikimori.Topic.Linked.Map ? number : null;
-        
+
         /** default: `Anime` */
         linked_type:            T extends keyof Shikimori.Topic.Linked.Map ? T : 'Anime';
         linked:                 T extends keyof Shikimori.Topic.Linked.Map ? Shikimori.Topic.Linked.Map[T] : null;
@@ -652,7 +660,7 @@ declare namespace Shikimori {
         }
 
         type Kind = 'tv' | 'movie' | 'ova' | 'ona' | 'special' | 'music';
-        
+
         /**
          * `S` – less than 10 minutes
          * 
@@ -661,7 +669,7 @@ declare namespace Shikimori {
          * `F` – more than 30 minutes
          */
         type Duration = 'S' | 'D' | 'F';
-        
+
         type Status = 'anons' | 'ongoing' | 'released';
 
         type TopicKind = Shikimori.Anime.Status | 'episode';
@@ -722,9 +730,9 @@ declare namespace Shikimori {
     };
     namespace Manga {
         type Kind = 'manga' | 'manhwa' | 'manhua' | 'light_novel' | 'novel' | 'one_shot' | 'doujin';
-        
+
         type Status = 'anons' | 'ongoing' | 'released' | 'paused' | 'discontinued';
-        
+
         type Order = 'id' | 'id_desc' | 'ranked' | 'kind' | 'popularity' | 'name' | 'aired_on' |
             'volumes' | 'chapters' | 'status' | 'random' | 'created_at' | 'created_at_desc';
 

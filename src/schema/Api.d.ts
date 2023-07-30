@@ -24,7 +24,7 @@ declare namespace Schema {
         constants:      HasApi & Schema.v1.Constants;
         dialogs:        HasApi & Schema.v1.Dialogs;
         favorites:      HasApi & Schema.v1.Favorites;
-        
+
         topics:         HasApi & Schema.v1.Topics;
         userRates:      HasApi & Schema.v1.UserRates;
         // ...

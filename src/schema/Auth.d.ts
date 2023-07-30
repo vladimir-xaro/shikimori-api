@@ -9,7 +9,7 @@ declare namespace Schema {
                 refresh_token?: string;
             };
         }
-        
+
         type Response = {
             access_token:   string;
             token_type:     'Bearer';

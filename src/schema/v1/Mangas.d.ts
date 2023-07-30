@@ -4,35 +4,35 @@ declare namespace Schema.v1 {
             type Params = {
                 /** @validation between `1` and  `100_000` */
                 page?:          number;
-                
+
                 /** @validation max `50` */
                 limit?:         number;
-                
+
                 order?:         Shikimori.Manga.Order;
                 kind?:          Shikimori.Manga.Kind;
                 status?:        Shikimori.Manga.Status;
-                
+
                 /** @example 'summer_2017', '2016', '2014_2016', '199x' */
                 season?:        string;
-                
+
                 /** Minimal manga score (only integer value)*/
                 score?:         number;
-                
+
                 /** List of genre ids separated by comma OR ids array */
                 genre?:         string | NumOrNumStr[];
-                
+
                 /** List of publisher ids separated by comma OR ids array */
                 publisher?:     string | NumOrNumStr[];
-                
+
                 /** List of franchises separated by comma OR ids array */
                 franchise?:     string | NumOrNumStr[];
-                
+
                 /** Set to `false` to allow hentai, yaoi and yuri */
                 censored?:      boolean;
 
                 /** Status of anime in current user list */
                 mylist?:        Shikimori.UserList;
-                
+
                 /** List of mangas ids separated by comma OR ids array */
                 ids?:           string | NumOrNumStr[];
 

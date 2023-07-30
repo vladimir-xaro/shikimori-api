@@ -34,7 +34,7 @@ declare namespace Schema.v1 {
          * @scope `topics`
          */
         create(params: Schema.v1.Reviews.Create.Params) : Promise< Shikimori.Review >;
-        
+
         /**
          * Update a review
          * @route PATCH /api/reviews/:id
@@ -43,7 +43,7 @@ declare namespace Schema.v1 {
          * @scope `topics`
          */
         update(id: number, params: Schema.v1.Reviews.Update.Params) : Promise< Shikimori.Review >;
-        
+
         /**
          * Destroy a review
          * @route DELETE /api/reviews/:id
