@@ -2,8 +2,7 @@
   "name": "@xaro/shikimori-api",
   "version": "0.0.1",
   "description": "JS/TS Shikimori API",
-  "main": "dist/shikimori-api.js",
-  "types": "src/types.d.ts",
+  "main": "src/ShikimoriAPI.ts",
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
@@ -39,8 +38,6 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@types/node-fetch": "^2.6.4",
-    "axios": "^1.4.0",
-    "node-fetch": "^3.3.2"
+    "axios": "^1.4.0"
   }
 }
