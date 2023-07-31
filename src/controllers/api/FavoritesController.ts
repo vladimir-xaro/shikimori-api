@@ -1,4 +1,4 @@
-import Controller from '@@src/Controller.ts';
+import Controller from '@@controllers/Controller.ts';
 import ShikimoriAPIError from '@@src/ShikimoriAPIError.js';
 import type * as Schema from '@@schema/index.d.ts';
 import type { Shikimori } from '@@types/Shikimori.d.ts';

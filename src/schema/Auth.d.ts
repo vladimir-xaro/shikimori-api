@@ -1,4 +1,6 @@
-import { AxiosInstance } from 'axios';
+import type { AxiosInstance } from 'axios';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
+import type * as Schema from '@@schema/index.d.ts';
 
 export namespace Auth {
     namespace Contructor {
@@ -32,4 +34,5 @@ export interface Auth {
     getAuthLink(scope: string | Shikimori.Scope[]) : Promise< string >;
     accessToken(authorization_code: string) : Promise< Schema.Auth.Response >;
     refreshToken(refresh_token?: string) : Promise< Schema.Auth.Response >;
+    getApiRequestInstance() : AxiosInstance;
 }

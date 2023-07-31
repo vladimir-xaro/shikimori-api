@@ -1,11 +1,10 @@
-import type { DateString, DateStringWithUTC } from '@@types/general.js';
+import type { DateString, DateStringISO8601 } from '@@types/general.js';
 
 export namespace Shikimori {
     /** General Unions */
 
     type Scope = 'user_rates' | 'messages' | 'comments' | 'topics' | 'content' | 'clubs' |
         'friends' | 'ignores';
-
 
     type Rating     = 'none' | 'g' | 'pg' | 'pg_13' | 'r' | 'r_plus' | 'rx';
     type UserList   = 'planned' | 'watching' | 'rewatching' | 'completed' | 'on_hold' | 'dropped';
@@ -37,8 +36,8 @@ export namespace Shikimori {
         name:           string;
         css:            string;
         compiled_css:   string | null;
-        created_at:     DateStringWithUTC;
-        updated_at:     DateStringWithUTC;
+        created_at:     DateStringISO8601;
+        updated_at:     DateStringISO8601;
     };
 
     namespace Style {
@@ -100,11 +99,10 @@ export namespace Shikimori {
     };
     namespace Video {
         type Kind = 'pv' | 'character_trailer' | 'cm' | 'op' | 'ed' | 'op_ed_clip' | 'clip' |
-                    'other' | 'episode_preview';
+            'other' | 'episode_preview';
 
         type Hosting = 'youtube' | 'vk' | 'ok' | 'coub' | 'rutube' | 'vimeo' | 'sibnet' | 'yandex' |
-                    'streamable' | 'smotret_anime' | 'myvi' | 'youmite' | 'viuly' | 'stormo' |
-                    'mediafile';
+            'streamable' | 'smotret_anime' | 'myvi' | 'youmite' | 'viuly' | 'stormo' | 'mediafile';
     }
 
     type UserRate = {
@@ -273,7 +271,11 @@ export namespace Shikimori {
             x16:    string; // full url
         };
 
-        type Uploaded<UserID extends number = number, ImageID extends number = number, Extension extends string = 'jpg'> = {
+        type Uploaded<
+            UserID extends number = number,
+            ImageID extends number = number,
+            Extension extends string = 'jpg'
+        > = {
             id:         number;
             preview:    `/system/user_images/preview/${UserID}/${ImageID}.${Extension}`; // /system/user_images/preview/23456789/1.jpg
             url:        `/system/user_images/original/${UserID}/${ImageID}.${Extension}`; // /system/user_images/original/23456789/1.jpg
@@ -297,7 +299,7 @@ export namespace Shikimori {
             characters:         Shikimori.Character[];
             thread_id:          number;
             topic_id:           number;
-            user_role:          string | null;  // admin
+            user_role:          string | null;  // admin, ...
             style_id:           number;
             members:            Shikimori.User[];
             animes:             Shikimori.Anime[];
@@ -319,12 +321,12 @@ export namespace Shikimori {
         body:                      string;
         opinion:                   Shikimori.Review.Opinion;
         is_written_before_release: boolean;
-        created_at:                DateStringWithUTC;
-        updated_at:                DateStringWithUTC;
+        created_at:                DateStringISO8601;
+        updated_at:                DateStringISO8601;
         comments_count:            number;
         cached_votes_up:           number;
         cached_votes_down:         number;
-        changed_at:                DateStringWithUTC;
+        changed_at:                DateStringISO8601;
     };
     namespace Review {
         type Opinion = 'positive' | 'neutral' | 'negative';
@@ -377,11 +379,11 @@ export namespace Shikimori {
                 ratings:        Shikimori.User.Extended.Stats.Ratings;
                 'has_anime?':   boolean;
                 'has_manga?':   boolean;
-                genres:         []; // alway empty
-                studios:        []; // alway empty
-                publishers:     []; // alway empty
+                genres:         []; // always empty
+                studios:        []; // always empty
+                publishers:     []; // always empty
 
-                /** length <= 26 */
+                /** length <= 26 (hardcoded) */
                 activity:       Shikimori.User.Extended.Stats.Activity.Item[];
             };
 
@@ -454,7 +456,7 @@ export namespace Shikimori {
 
         type History = {
             id:             number;
-            created_at:     DateStringWithUTC;
+            created_at:     DateStringISO8601;
             description:    string;
             target:         Anime | Manga | null;
         };
@@ -482,9 +484,15 @@ export namespace Shikimori {
         body:           string;
         html_body:      string;
         created_at:     DateString;
-        linked_id:      T extends keyof Shikimori.Message.Linked.Map ? number : 0;
-        linked_type:    T extends keyof Shikimori.Message.Linked.Map ? T : null;
-        linked:         T extends keyof Shikimori.Message.Linked.Map ? Shikimori.Message.Linked.Map[T] : null;
+        linked_id:      T extends keyof Shikimori.Message.Linked.Map
+                            ? number
+                            : 0;
+        linked_type:    T extends keyof Shikimori.Message.Linked.Map
+                            ? T
+                            : null;
+        linked:         T extends keyof Shikimori.Message.Linked.Map
+                            ? Shikimori.Message.Linked.Map[T]
+                            : null;
     };
     namespace Message {
         namespace Linked {
@@ -509,7 +517,9 @@ export namespace Shikimori {
 
             type Type = Shikimori.Topic.Linked.Type | 'Comment' | 'Version';
         }
-        type Extended<T extends keyof Shikimori.Message.Linked.Map | null = null> = Shikimori.Message<T> & {
+        type Extended<
+            T extends keyof Shikimori.Message.Linked.Map | null = null
+        > = Shikimori.Message<T> & {
             from:   Shikimori.User;
             to:     Shikimori.User;
         }
@@ -546,8 +556,12 @@ export namespace Shikimori {
         linked_id:              T extends keyof Shikimori.Topic.Linked.Map ? number : null;
 
         /** default: `Anime` */
-        linked_type:            T extends keyof Shikimori.Topic.Linked.Map ? T : 'Anime';
-        linked:                 T extends keyof Shikimori.Topic.Linked.Map ? Shikimori.Topic.Linked.Map[T] : null;
+        linked_type:            T extends keyof Shikimori.Topic.Linked.Map
+                                    ? T
+                                    : 'Anime';
+        linked:                 T extends keyof Shikimori.Topic.Linked.Map
+                                    ? Shikimori.Topic.Linked.Map[T]
+                                    : null;
         viewed:                 boolean;
         last_comment_viewed:    true | null;    // null
         event:                  string | null;  // episode, anons, event, ...
@@ -720,20 +734,6 @@ export namespace Shikimori {
     type Ranobe = Manga & {
         kind: 'light_novel';
     };
-    // type Ranobe = Manga &{
-    //     id:             number;
-    //     name:           string;
-    //     russian:        string;
-    //     image:          Shikimori.Image;
-    //     url:            string;         // path without domain
-    //     kind:           'light_novel';
-    //     score:          `${number}`;    // string number (8.3)
-    //     status:         Shikimori.Ranobe.Status;
-    //     volumes:        number;
-    //     chapters:       number;
-    //     aired_on:       DateString | null;
-    //     released_on:    DateString | null;
-    // };
     namespace Ranobe {
         type Status = 'anons' | 'ongoing' | 'released' | 'paused' | 'discontinued';
 

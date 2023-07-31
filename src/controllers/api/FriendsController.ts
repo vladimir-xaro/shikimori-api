@@ -1,4 +1,4 @@
-import Controller from '@@src/Controller.ts';
+import Controller from '@@controllers/Controller.ts';
 import type * as Schema from '@@schema/index.d.ts';
 import type { ResponseWithNotice } from '@@types/general.d.ts';
 

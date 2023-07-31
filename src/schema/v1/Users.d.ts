@@ -65,6 +65,28 @@ export namespace Users {
             // type:   Shikimori.Message.Type;
             type:   T;
         };
+
+        type Params2 = {
+            /** @validation between `1` and  `100_000` */
+            page?:  number;
+
+            /** @validation max `100` */
+            limit?: number;
+
+            // type:   Shikimori.Message.Type;
+            type:   Shikimori.Message.Type;
+        }
+
+        namespace Response {
+            type Map = {
+                'inbox':        Shikimori.Message.Extended< null >;
+                'sent':         Shikimori.Message.Extended< null >;
+                'private':      Shikimori.Message.Extended< null >;
+                'news':         Shikimori.Message.Extended< Shikimori.Message.Linked.Type >;
+                'notification': Shikimori.Message.Extended< Shikimori.Message.Linked.Type >;
+            };
+        }
+        type Response<T extends Shikimori.Message.Type> = Shikimori.Message.Extended<null>;
     }
 
     namespace UnreadMessages {
@@ -144,7 +166,7 @@ export interface Users {
      * Show user's clubs
      * @route GET /api/users/:id/clubs
     */
-    friends(id: number | string) : Promise< Shikimori.Club[] >;
+    clubs(id: number | string) : Promise< Shikimori.Club[] >;
 
     /**
      * Show user's anime list
@@ -181,11 +203,13 @@ export interface Users {
      * @route GET /api/users/:id/messages
      * @scope `messages`
      */
-    messages(params: Users.Messages.Params<'inbox'>) : Promise< Shikimori.Message.Extended<null> >;
-    messages(params: Users.Messages.Params<'sent'>) : Promise< Shikimori.Message.Extended<null> >;
-    messages(params: Users.Messages.Params<'private'>) : Promise< Shikimori.Message.Extended<null> >;
-    messages(params: Users.Messages.Params<'news'>) : Promise< Shikimori.Message.Extended<Shikimori.Message.Linked.Type> >;
-    messages(params: Users.Messages.Params<'notifications'>) : Promise< Shikimori.Message.Extended<Shikimori.Message.Linked.Type> >;
+    // messages<T extends Shikimori.Message.Type = 'inbox'>(params: Users.Messages.Params<T>) : Promise< Shikimori.Message.Extended<null> >;
+    // messages<T extends Shikimori.Message.Type = 'sent'>(params: Users.Messages.Params<T>) : Promise< Shikimori.Message.Extended<null> >;
+    // messages<T extends Shikimori.Message.Type = 'private'>(params: Users.Messages.Params<T>) : Promise< Shikimori.Message.Extended<null> >;
+    // messages<T extends Shikimori.Message.Type = 'news'>(params: Users.Messages.Params<T>) : Promise< Shikimori.Message.Extended<Shikimori.Message.Linked.Type> >;
+    // messages<T extends Shikimori.Message.Type = 'notifications'>(params: Users.Messages.Params<T>) : Promise< Shikimori.Message.Extended<Shikimori.Message.Linked.Type> >;
+    // TODO: check this variant
+    messages(id: number | string, params: Users.Messages.Params2) : Promise< Users.Messages.Response<typeof params.type> >;
 
     /**
      * Show current user's unread messages counts
@@ -210,5 +234,5 @@ export interface Users {
      * Show user's bans
      * @route GET /api/users/:id/bans
      */
-    bans() : Promise< Shikimori.Ban[] >;
+    bans(id: number | string) : Promise< Shikimori.Ban[] >;
 }

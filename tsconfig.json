@@ -20,8 +20,7 @@
         "paths": {
             "@@src/*": [ "*" ],
             "@@schema/*": [ "schema/*" ],
-            "@@auth/*": [ "auth/*" ],
-            "@@api/*": [ "api/*" ],
+            "@@controllers/*": [ "controllers/*" ],
             "@@types/*": [ "types/*" ]
         }
     },

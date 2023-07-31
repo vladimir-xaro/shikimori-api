@@ -1,6 +1,6 @@
 export namespace TopicIgnore {
     type Response<T extends boolean> = {
-        topic_id:    `${number}`;
+        topic_id:   `${number}`;
         is_ignored: T;
     };
 

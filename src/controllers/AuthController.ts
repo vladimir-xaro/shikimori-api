@@ -1,9 +1,13 @@
-import axios, { AxiosInstance } from 'axios';
-import { REDIRECT_URI, AUTH_URL, TOKEN_URL } from '@@src/constants.js';
+import axios, { type AxiosInstance } from 'axios';
+import type * as Schema from '@@schema/index.d.ts';
+import type { Shikimori } from '@@types/Shikimori.d.ts';
 
+import { REDIRECT_URI, AUTH_URL, TOKEN_URL, API_URL } from '@@src/constants.ts';
 
 
 export default class AuthController implements Schema.Auth {
+    authorized:     boolean = false;
+
     app_name:       string;
     client_id:      string;
     client_secret:  string;
@@ -17,14 +21,19 @@ export default class AuthController implements Schema.Auth {
         this.client_id      = params.client_id;
         this.client_secret  = params.client_secret;
 
+        if (params.access_token) {
+            this.access_token = params.access_token;
+            this.authorized = true;
+        }
+
         this.request = axios.create({
             headers: {
-                'User-Agent':   this.app_name,
+                'User-Agent': this.app_name,
             }
         });
     }
 
-    async getAuthLink(scope: string | Scope[]) : Promise< string > {
+    async getAuthLink(scope: string | Shikimori.Scope[]) : Promise< string > {
         const params = new URLSearchParams({
             response_type:  'code',
             scope:          scope instanceof Array ? scope.join(' ') : scope,
@@ -64,5 +73,24 @@ export default class AuthController implements Schema.Auth {
         this.refresh_token  = res.data.refresh_token;
 
         return res.data;
+    }
+
+    getApiRequestInstance() : AxiosInstance {
+        const request = axios.create({
+            headers: {
+                'User-Agent':       this.app_name,
+                'Authorization':    `Bearer ${this.access_token}`,
+            },
+            baseURL: API_URL,
+        });
+
+        // request.interceptors.request.use((config) => {
+        //     if (! this.auth.access_token) {
+        //         throw new Error('access_token is missing');
+        //     }
+        //     return config;
+        // });
+
+        return request;
     }
 }

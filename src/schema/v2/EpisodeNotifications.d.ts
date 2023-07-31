@@ -1,4 +1,4 @@
-import type { BoolOrNumBool } from '@@types/general.d.ts';
+import type { BoolOrNumBool, DateStringISO8601 } from '@@types/general.d.ts';
 
 export namespace EpisodeNotifications {
     namespace Index {
@@ -11,7 +11,7 @@ export namespace EpisodeNotifications {
                  * Episode release date
                  * @validation Must be a date in `iso8601` `YYYY-MM-DDThh:mm:ss±hh` format
                  */
-                aired_at:       string;
+                aired_at:       DateStringISO8601;
 
                 is_fandub?:     BoolOrNumBool;
                 is_raw?:        BoolOrNumBool;

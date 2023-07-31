@@ -1,7 +1,6 @@
-import Controller from '@@src/Controller.ts';
+import Controller from '@@controllers/Controller.ts';
 import type * as Schema from '@@schema/index.d.ts';
 import type { Shikimori } from '@@types/Shikimori.d.ts';
-import type { } from '@@types/general.d.ts';
 
 export default class MessagesController extends Controller implements Schema.v1.Messages {
 
